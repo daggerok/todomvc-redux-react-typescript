@@ -1,0 +1,82 @@
+{
+  "name": "todomvc-redux-react-typescript",
+  "version": "1.0.0",
+  "description": "TodoMVC example using Redux, React, and Typescript (jaysoo fork)",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/daggerok/todomvc-redux-react-typescript.git"
+  },
+  "scripts": {
+    "postinstall-new": "npm-run-all typings:*",
+    "typings:clean": "rimraf -rf typings*",
+    "typings:init": "typings init",
+    "typings:sd": "typings i -SD redux react-redux lodash chai",
+    "typings:sa": "typings i -SA redux-actions react-dom react mocha classnames assertion-error",
+    "postinstall": "typings install",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack-production.config.js --progress --profile --colors -p",
+    "build-watch": "npm run build -- -w",
+    "start-watch": "npm-run-all build server-production",
+    "start": "npm i; npm-run-all --parallel server-production build-watch",
+    "build:dev": "node webpack/dev-server.js",
+    "server-production": "node server/production",
+    "start:dev": "npm-run-all build:dev server-development",
+    "server-development": "node server/development",
+    "test": "npm-run-all compile mocha",
+    "mocha": "mocha --require test-setup --recursive ./dist/**/__spec__/**/*-spec.js",
+    "compile": "tsc"
+  },
+  "author": "Jack Hsu <jack.hsu@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "classnames": "2.2.3",
+    "express": "4.13.4",
+    "extract-text-webpack-plugin": "1.0.1",
+    "lodash": "4.13.1",
+    "react": "0.14.7",
+    "react-dom": "0.14.7",
+    "react-redux": "4.4.0",
+    "redux": "3.1.3",
+    "redux-actions": "0.8.0",
+    "serve-static": "1.11.1",
+    "todomvc-app-css": "2.0.6",
+    "yargs": "4.7.1"
+  },
+  "devDependencies": {
+    "babel": "6.5.2",
+    "babel-core": "6.9.1",
+    "babel-loader": "6.2.4",
+    "babel-polyfill": "6.9.1",
+    "babel-preset-es2015": "6.9.0",
+    "babel-runtime": "6.9.2",
+    "chai": "3.5.0",
+    "cross-env": "1.0.8",
+    "css-loader": "0.23.1",
+    "eslint-plugin-react": "5.1.1",
+    "file-loader": "0.8.5",
+    "jsdom": "9.2.1",
+    "mocha": "2.5.3",
+    "npm-run-all": "2.1.1",
+    "react-hot-loader": "1.3.0",
+    "redux-devtools": "3.3.1",
+    "rimraf": "2.5.2",
+    "socket.io": "1.4.6",
+    "stats-webpack-plugin": "0.3.1",
+    "style-loader": "0.13.1",
+    "ts-loader": "0.8.2",
+    "typescript": "1.8.10",
+    "typescript-require": "0.2.9-1",
+    "typings": "0.8.1",
+    "webpack": "1.13.1",
+    "webpack-dev-server": "1.14.1"
+  },
+  "bugs": {
+    "url": "https://github.com/daggerok/todomvc-redux-react-typescript/issues"
+  },
+  "homepage": "https://github.com/daggerok/todomvc-redux-react-typescript#readme",
+  "main": "test-setup.js",
+  "keywords": [
+    "react",
+    "typescript",
+    "redux"
+  ]
+}
